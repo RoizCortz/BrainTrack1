@@ -13,8 +13,8 @@ namespace BrainTrack1
 {
     public partial class LogInPage : Form
     {
-        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\USER\source\repos\BrainTrack1\BrainTrack_data.mdb"); //reconnect if on another device
-        OleDbCommand cmd;//                         Reconnect ^
+        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\USER\source\repos\BrainTrack1\BrainTrack_data.mdb");
+        OleDbCommand cmd;//                         Reconnect ^ if on another device
         OleDbDataReader dr;
 
         public LogInPage()
@@ -43,7 +43,7 @@ namespace BrainTrack1
         {
             connection.Open();
             cmd = new OleDbCommand("SELECT * FROM account WHERE username='" + usernameBox.Text + "' AND password='" + passwordBox.Text + "'", connection);
-            dr = cmd.ExecuteReader();//            Table        Column  Data             
+            dr = cmd.ExecuteReader();//            Table          Column             Data                Column            Data                  Var
 
             if (dr.Read())
             {
@@ -56,7 +56,7 @@ namespace BrainTrack1
             {
                 MessageBox.Show("Login Failed");
                 connection.Close();
-                //must close connection if login failed, otherwise it will be open and cause an error when trying to log in again
+                //must close connection if login failed, otherwise it will cause an error.
             }
         }
     }

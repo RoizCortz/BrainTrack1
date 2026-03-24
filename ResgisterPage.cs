@@ -14,7 +14,7 @@ namespace BrainTrack1
     public partial class RegisterPage : Form
     {
         OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\USER\source\repos\BrainTrack1\BrainTrack_data.mdb");
-        OleDbCommand cmd;
+        OleDbCommand cmd;;//                         Reconnect ^ if on another device
         OleDbDataReader dr;
 
         public RegisterPage()
@@ -46,14 +46,14 @@ namespace BrainTrack1
 
         private void RegisterButton_Click(object sender, EventArgs e)
         {
-            connection.Open();
+            connection.Open();//                Column      Data        Data        Data          Data                 Values         Var
             cmd = new OleDbCommand("INSERT INTO account ([fullname], [username], [password], [dateofbirth]) VALUES (?, ?, ?, ?)", connection);
-            cmd.Parameters.AddWithValue("@fullname", FullnameBox.Text); //value of fullname
-            cmd.Parameters.AddWithValue("@username", usernameBox.Text); //value of username
-            cmd.Parameters.AddWithValue("@password", passwordBox.Text); //value of password
+            cmd.Parameters.AddWithValue("@fullname", FullnameBox.Text); //input value of fullname 
+            cmd.Parameters.AddWithValue("@username", usernameBox.Text); //input value of username
+            cmd.Parameters.AddWithValue("@password", passwordBox.Text); //input value of password
             cmd.Parameters.Add("@dateofbirth", OleDbType.DBDate).Value = DateBirth.Value;
-            //                                                           DatePicker&Value 
-            int tof = cmd.ExecuteNonQuery();//needs to declare that it writes then,
+            //            "@" Declares column                            DatePicker&Value 
+            int tof = cmd.ExecuteNonQuery();//needs to declare, then it writes on DB,
             
             if (tof > 0)
             {
