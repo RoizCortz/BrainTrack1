@@ -56,7 +56,7 @@ namespace BrainTrack1
             {
                 MessageBox.Show("Login Failed");
                 connection.Close();
-                //must close connection if login failed, otherwise it will cause an error.
+                //must close connection if login failed, otherwise it will cause an error. yes
             }
         }
     }
