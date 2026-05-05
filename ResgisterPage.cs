@@ -13,7 +13,7 @@ namespace BrainTrack1
 {
     public partial class RegisterPage : Form
     {
-        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\BrainTrack_data.mdb");
+        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\USER\source\repos\RoizCortz\BrainTrack1\BrainTrack_data.mdb");
         OleDbCommand cmd;//                         Reconnect ^ if on another device
 
         public RegisterPage()
@@ -51,7 +51,7 @@ namespace BrainTrack1
             cmd.Parameters.AddWithValue("@username", usernameBox.Text); //input value of username
             cmd.Parameters.AddWithValue("@password", passwordBox.Text); //input value of password
             cmd.Parameters.Add("@dateofbirth", OleDbType.DBDate).Value = DateBirth.Value;
-            //            "@" Declares column                            DatePicker&Value 
+            //            "@" Declares column     VALUE TYPE      DatePicker&Value 
             int tof = cmd.ExecuteNonQuery();//needs to declare, then it writes on DB,
             
             if (tof > 0)

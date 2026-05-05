@@ -174,7 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BrainTrack_data.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

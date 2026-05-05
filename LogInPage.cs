@@ -13,7 +13,7 @@ namespace BrainTrack1
 {
     public partial class LogInPage : Form
     {
-        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\BrainTrack_data.mdb");
+        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\USER\source\repos\RoizCortz\BrainTrack1\BrainTrack_data.mdb");
         OleDbCommand cmd;//                         Reconnect ^ if on another device
         OleDbDataReader dr;
 
@@ -47,8 +47,9 @@ namespace BrainTrack1
 
             if (dr.Read())
             {
+                string username = usernameBox.Text;
                 MessageBox.Show("Login Successful");
-                MainPage mP = new MainPage();
+                MainPage mP = new MainPage(username);
                 mP.Show();
                 this.Hide();
             }
