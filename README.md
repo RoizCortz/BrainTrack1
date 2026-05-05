@@ -6,7 +6,7 @@ A C# WinForms Project that is solely made for educational purposes to pass my Co
    - Login System using local access .mdb ✅
    - Register System using local access .mdb ✅
  - Planned
-   - Tracking using Table format per Account ⭕
+   - Tracking using Table format per Account ✅
    - Locally Saving without relying to .mdb ⛔
      (Array Saving)
    - Export/Import your Tracks 
