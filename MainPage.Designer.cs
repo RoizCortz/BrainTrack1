@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +51,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.TaskTitle = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label3 = new System.Windows.Forms.Label();
             this.UsernameDis = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SidePanel.SuspendLayout();
@@ -65,14 +63,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(67)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTask,
@@ -86,7 +84,6 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -100,35 +97,30 @@
             this.colTask.HeaderText = "Task";
             this.colTask.MinimumWidth = 6;
             this.colTask.Name = "colTask";
-            this.colTask.ReadOnly = true;
             // 
             // colSubject
             // 
             this.colSubject.HeaderText = "Subject";
             this.colSubject.MinimumWidth = 6;
             this.colSubject.Name = "colSubject";
-            this.colSubject.ReadOnly = true;
             // 
             // colDate
             // 
             this.colDate.HeaderText = "Due Date";
             this.colDate.MinimumWidth = 6;
             this.colDate.Name = "colDate";
-            this.colDate.ReadOnly = true;
             // 
             // colPriority
             // 
             this.colPriority.HeaderText = "Priority";
             this.colPriority.MinimumWidth = 6;
             this.colPriority.Name = "colPriority";
-            this.colPriority.ReadOnly = true;
             // 
             // colStatus
             // 
             this.colStatus.HeaderText = "Status";
             this.colStatus.MinimumWidth = 6;
             this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
             // 
             // label1
             // 
@@ -185,6 +177,7 @@
             this.ClearCompleted.TabIndex = 14;
             this.ClearCompleted.Text = "Clear";
             this.ClearCompleted.UseVisualStyleBackColor = true;
+            this.ClearCompleted.Click += new System.EventHandler(this.ClearCompleted_Click);
             // 
             // DeleteTask
             // 
@@ -196,6 +189,7 @@
             this.DeleteTask.TabIndex = 13;
             this.DeleteTask.Text = "Delete Task";
             this.DeleteTask.UseVisualStyleBackColor = true;
+            this.DeleteTask.Click += new System.EventHandler(this.DeleteTask_Click);
             // 
             // AddTask
             // 
@@ -331,25 +325,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Task Title";
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(762, 59);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(189, 28);
-            this.progressBar1.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(797, 41);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Track your progress.\r\n";
-            // 
             // UsernameDis
             // 
             this.UsernameDis.AutoSize = true;
@@ -368,8 +343,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(179)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1011, 586);
             this.Controls.Add(this.UsernameDis);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
@@ -392,8 +365,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox SubjectType;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TaskTitle;

@@ -9,6 +9,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+-------------------------------------------
+ BrainTrack1 - MainPage.cs
+ Variable List & Purpose
+-------------------------------------------
+
+connection      → OleDbConnection object holding the connection string to the Access database.
+cmd             → OleDbCommand object used to execute SQL queries (INSERT, DELETE, SELECT).
+dr              → OleDbDataReader object for reading query results row by row (not heavily used here).
+CurrentUsername → Stores the username of the currently logged-in user; used to filter tasks per user.
+
+UsernameDis     → Label control that displays "Welcome, [username]!" on the Main form.
+dataGridView1   → DataGridView control that displays tasks from the database.
+tasksTable      → DataTable object that temporarily holds query results before binding to the grid.
+
+TaskTitle       → TextBox input for the task name.
+SubjectType     → ComboBox/TextBox input for the subject category.
+TaskDue         → TextBox/DateTime input for the due date.
+TaskPriority    → ComboBox/TextBox input for the priority level.
+Status          → ComboBox/TextBox input for the task status.
+
+taskId          → Integer variable storing the unique ID of the selected task (used for deletion).
+result          → DialogResult variable storing the user’s response from confirmation dialogs (Yes/No).
+
+Event Handlers:
+SetupGrid()                      → Configures DataGridView columns (adds hidden ID + visible task fields).
+LoadTasksForUsername()           → Loads tasks from the database filtered by CurrentUsername and binds them to the grid.
+AddTask_Click()                  → Inserts a new task into the database using values from the input fields, then refreshes the grid.
+DeleteTask_Click()               → Deletes the currently selected task (by hidden ID) from the database, then refreshes the grid.
+ClearCompleted_Click()           → Deletes ALL tasks belonging to the current user from the database, then refreshes the grid.
+dataGridView1_CellContentClick() → Event handler for clicks inside the DataGridView (currently unused).
+____________________________________________
+*/
+
 namespace BrainTrack1
 {
     public partial class MainPage : Form
@@ -20,7 +54,7 @@ namespace BrainTrack1
         OleDbDataReader dr; // Used for reading results from queries
 
         private string CurrentUsername; // Stores the username of the logged-in user
-
+        
         public MainPage(string username) // Constructor that accepts a username (called after login)
         {
             InitializeComponent();
@@ -36,6 +70,15 @@ namespace BrainTrack1
             dataGridView1.AutoGenerateColumns = false; // Disable auto column generation
             dataGridView1.Columns.Clear(); // Clear any existing columns
 
+            // Add hidden ID column for Delete Button in the DataBase
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "ID",
+                DataPropertyName = "ID",
+                Name = "ID",
+                Visible = false
+            });
+
             // Add columns with headers and bind them to database fields
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Task", DataPropertyName = "Task" });
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Subject", DataPropertyName = "Subject" });
@@ -46,7 +89,7 @@ namespace BrainTrack1
 
         private void LoadTasksForUsername(string username) // Load tasks from the database for the given username
         {
-            string query = "SELECT Task, Subject, DueDate, Priority, Status FROM tasks WHERE Username = @username";
+            string query = "SELECT ID, Task, Subject, DueDate, Priority, Status FROM tasks WHERE Username = @username";
 
             using (OleDbCommand cmd = new OleDbCommand(query, connection))
             {
@@ -58,9 +101,14 @@ namespace BrainTrack1
                 adapter.Fill(tasksTable);
                 dataGridView1.DataSource = tasksTable;  // Bind DataTable to DataGridView
             }
+
+            if (dataGridView1.Columns["ID"] != null)
+            {
+                dataGridView1.Columns["ID"].Visible = false;
+            }
         }
 
-        public MainPage() // Default constructor (not used in login flow, but required by WinForms)
+        public MainPage() // Default constructor (not used in login flow, but it is required by WinForms)
         {
             InitializeComponent();
         }
@@ -98,6 +146,61 @@ namespace BrainTrack1
                 connection.Close();
             }
             LoadTasksForUsername(CurrentUsername);  // Refresh DataGridView to show updated tasks
+        }
+
+        private void DeleteTask_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Get the hidden ID value
+                int taskId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ID"].Value);
+
+                string query = "DELETE FROM tasks WHERE ID = @id AND Username = @username";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", taskId);
+                    cmd.Parameters.AddWithValue("@username", CurrentUsername);
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                // Refresh grid
+                LoadTasksForUsername(CurrentUsername);
+            }
+            else
+            {
+                MessageBox.Show("Please select a task to delete.");
+            }
+        }
+
+        private void ClearCompleted_Click(object sender, EventArgs e)
+        {
+            // Ask user for confirmation before wiping everything
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete ALL your tasks?",
+                "Confirm Clear All",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE FROM tasks WHERE Username = @username";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@username", CurrentUsername);
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                // Refresh grid to show it's empty
+                LoadTasksForUsername(CurrentUsername);
+            }
         }
     }
 }
