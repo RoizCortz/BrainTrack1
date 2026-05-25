@@ -13,7 +13,7 @@ namespace BrainTrack1
 {
     public partial class RegisterPage : Form
     {
-        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\USER\source\repos\RoizCortz\BrainTrack1\BrainTrack_data.mdb");
+        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\BrainTrack_data.mdb");
         OleDbCommand cmd;//                         Reconnect ^ if on another device
 
         public RegisterPage()

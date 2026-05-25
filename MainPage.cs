@@ -49,7 +49,7 @@ namespace BrainTrack1
     {
         // Connection string to the Access database (.mdb file)
         // NOTE: Adjust the path if running on another device
-        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\USER\source\repos\RoizCortz\BrainTrack1\BrainTrack_data.mdb");
+        OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\BrainTrack_data.mdb");
         OleDbCommand cmd; // Used for executing SQL commands
         OleDbDataReader dr; // Used for reading results from queries
 
