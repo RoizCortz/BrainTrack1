@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +52,7 @@
             this.TaskTitle = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.UsernameDis = new System.Windows.Forms.Label();
+            this.LogOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SidePanel.SuspendLayout();
             this.SuspendLayout();
@@ -63,14 +64,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(67)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTask,
@@ -80,7 +81,7 @@
             this.colStatus});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(246, 136);
+            this.dataGridView1.Location = new System.Drawing.Point(328, 134);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -126,7 +127,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cambria", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(272, 55);
+            this.label1.Location = new System.Drawing.Point(335, 61);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(283, 44);
@@ -137,7 +138,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(278, 105);
+            this.label2.Location = new System.Drawing.Point(340, 105);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(229, 16);
@@ -147,6 +148,7 @@
             // SidePanel
             // 
             this.SidePanel.BackgroundImage = global::BrainTrack1.Properties.Resources.collection;
+            this.SidePanel.Controls.Add(this.LogOut);
             this.SidePanel.Controls.Add(this.ClearCompleted);
             this.SidePanel.Controls.Add(this.DeleteTask);
             this.SidePanel.Controls.Add(this.AddTask);
@@ -164,13 +166,13 @@
             this.SidePanel.Location = new System.Drawing.Point(0, 0);
             this.SidePanel.Margin = new System.Windows.Forms.Padding(2);
             this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(245, 586);
+            this.SidePanel.Size = new System.Drawing.Size(328, 586);
             this.SidePanel.TabIndex = 0;
             // 
             // ClearCompleted
             // 
             this.ClearCompleted.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearCompleted.Location = new System.Drawing.Point(140, 527);
+            this.ClearCompleted.Location = new System.Drawing.Point(208, 537);
             this.ClearCompleted.Margin = new System.Windows.Forms.Padding(2);
             this.ClearCompleted.Name = "ClearCompleted";
             this.ClearCompleted.Size = new System.Drawing.Size(92, 30);
@@ -182,7 +184,7 @@
             // DeleteTask
             // 
             this.DeleteTask.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteTask.Location = new System.Drawing.Point(140, 488);
+            this.DeleteTask.Location = new System.Drawing.Point(208, 498);
             this.DeleteTask.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteTask.Name = "DeleteTask";
             this.DeleteTask.Size = new System.Drawing.Size(92, 30);
@@ -195,7 +197,7 @@
             // 
             this.AddTask.BackColor = System.Drawing.Color.White;
             this.AddTask.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddTask.Location = new System.Drawing.Point(140, 446);
+            this.AddTask.Location = new System.Drawing.Point(208, 456);
             this.AddTask.Margin = new System.Windows.Forms.Padding(2);
             this.AddTask.Name = "AddTask";
             this.AddTask.Size = new System.Drawing.Size(92, 30);
@@ -263,7 +265,7 @@
             this.TaskDue.Location = new System.Drawing.Point(43, 288);
             this.TaskDue.Margin = new System.Windows.Forms.Padding(2);
             this.TaskDue.Name = "TaskDue";
-            this.TaskDue.Size = new System.Drawing.Size(159, 20);
+            this.TaskDue.Size = new System.Drawing.Size(187, 20);
             this.TaskDue.TabIndex = 6;
             // 
             // label6
@@ -286,7 +288,7 @@
             this.SubjectType.Margin = new System.Windows.Forms.Padding(2);
             this.SubjectType.Multiline = true;
             this.SubjectType.Name = "SubjectType";
-            this.SubjectType.Size = new System.Drawing.Size(161, 24);
+            this.SubjectType.Size = new System.Drawing.Size(217, 24);
             this.SubjectType.TabIndex = 3;
             // 
             // label5
@@ -309,7 +311,7 @@
             this.TaskTitle.Margin = new System.Windows.Forms.Padding(2);
             this.TaskTitle.Multiline = true;
             this.TaskTitle.Name = "TaskTitle";
-            this.TaskTitle.Size = new System.Drawing.Size(161, 24);
+            this.TaskTitle.Size = new System.Drawing.Size(217, 24);
             this.TaskTitle.TabIndex = 1;
             // 
             // label4
@@ -329,19 +331,30 @@
             // 
             this.UsernameDis.AutoSize = true;
             this.UsernameDis.Font = new System.Drawing.Font("Cambria", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsernameDis.Location = new System.Drawing.Point(275, 9);
+            this.UsernameDis.Location = new System.Drawing.Point(337, 16);
             this.UsernameDis.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.UsernameDis.Name = "UsernameDis";
             this.UsernameDis.Size = new System.Drawing.Size(137, 34);
             this.UsernameDis.TabIndex = 7;
             this.UsernameDis.Text = "Welcome";
             // 
+            // LogOut
+            // 
+            this.LogOut.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogOut.Location = new System.Drawing.Point(12, 537);
+            this.LogOut.Name = "LogOut";
+            this.LogOut.Size = new System.Drawing.Size(66, 30);
+            this.LogOut.TabIndex = 15;
+            this.LogOut.Text = "Log Out";
+            this.LogOut.UseVisualStyleBackColor = true;
+            this.LogOut.Click += new System.EventHandler(this.LogOut_Click);
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(179)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1011, 586);
+            this.ClientSize = new System.Drawing.Size(1093, 586);
             this.Controls.Add(this.UsernameDis);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -383,5 +396,6 @@
         private System.Windows.Forms.ComboBox TaskPriority;
         private System.Windows.Forms.Button ClearCompleted;
         private System.Windows.Forms.Label UsernameDis;
+        private System.Windows.Forms.Button LogOut;
     }
 }

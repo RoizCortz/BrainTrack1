@@ -90,7 +90,6 @@ namespace BrainTrack1
         private void LoadTasksForUsername(string username) // Load tasks from the database for the given username
         {
             string query = "SELECT ID, Task, Subject, DueDate, Priority, Status FROM tasks WHERE Username = @username";
-
             using (OleDbCommand cmd = new OleDbCommand(query, connection))
             {
                 cmd.Parameters.AddWithValue("@username", CurrentUsername); // Bind username parameter to filter tasks
@@ -200,6 +199,21 @@ namespace BrainTrack1
 
                 // Refresh grid to show it's empty
                 LoadTasksForUsername(CurrentUsername);
+            }
+        }
+
+        private void LogOut_Click(object sender, EventArgs e)
+        {
+            DialogResult LGResult = MessageBox.Show(
+                "Are you sure you want to log out?",
+                "Confirm Log Out",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            if (LGResult == DialogResult.Yes)
+            {
+                LogInPage LIP = new LogInPage();
+                LIP.Show();
+                this.Close();
             }
         }
     }
